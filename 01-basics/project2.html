@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Form</title>
+</head>
+<style>
+    #submit{
+        width: 100px;
+        height: 30px;
+    }
+    .container{
+        display: flex;
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 50px;
+        width: auto;
+        max-width: 500px;
+        background-color: lightblue;
+    }
+    body {
+  background-color: burlywood;
+  width: 100%;
+  height: 100vh; /* take full height of screen */
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center;  
+  flex-direction: column;   /* center vertically */
+  top: -100px;
+}
+.heading {
+  text-align: center;
+  color: darkblue;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+</style>
+<body>
+<h1 class="heading">BMI Calculater</h1>
+  <div class="container">
+    <form id="bmi-form">
+    <!-- Text input -->
+   <label for="Height">Height(in cm)</label>
+    <input type="number" id="height" required>
+    <br><br>
+
+    <!-- Email input -->
+    <label for="Weight">Weight(in kg)</label>
+    <input type="number" id="weight" required>
+    <br><br>
+
+    <!-- Submit button -->
+    <button id="submit"></button>
+  </form>
+<span class="result"></span>
+  </div>
+<script src="project2.js"></script>
+</body>
+</html>
