@@ -2,33 +2,38 @@ const InputNum = document.getElementById("guess");
 const Button = document.querySelector(".submit");
 const result = document.querySelector(".result");
 let times = 0;
-const randomNumber = Math.floor(Math.random() * 10) + 1;
+let randomNumber = Math.floor(Math.random() * 10) + 1;
 const remain = document.querySelector(".remain");
+const resetButton = document.querySelector(".reset");
 Button.addEventListener('click', function (event) {
   event.preventDefault();
   times++;
-  if (times < 10) {
-    if (InputNum.value == randomNumber) {
+  if( InputNum.value.trim() === "") {
+    result.textContent = "Please enter a number between 1 and 10."; 
+    times--;
+  }
+  else if (times < 10) {
+    if (InputNum.value.trim()  == randomNumber) {
       result.textContent = "Congratulations! You guessed the number!";
-      times = 0; // Reset the counter after a correct guess
-      resetGame(); // Reset the game for a new round
     } else {
       result.textContent = "Sorry, that's not correct. Try again!";
-      remain.textContent = ` remaining chances ${10-times}`;
+      remain.textContent = ` Remaining chances ${10-times}`;
     }
   }
   else {
-    result.textContent = "Game Over! You've used all your chances.";
     remain.textContent = '';
+    result.textContent = "Game Over! You've used all your chances.";
   }
+  InputNum.value = ''; // Clear the input field after each guess
 });
 function resetGame() {
   InputNum.value = '';
+  times = 0;
   result.textContent = '';
   remain.textContent = '';
   randomNumber = Math.floor(Math.random() * 10) + 1;
 }
-Button.addEventListener('dblclick', resetGame);
+resetButton.addEventListener('click', resetGame);
 
 function updatecursor() {
   if (InputNum.value.trim() === "") {
